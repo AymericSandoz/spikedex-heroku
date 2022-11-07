@@ -19,7 +19,7 @@ window.onload = function () {
 };
 
 const getTokenNumber = async () => {
-  var packToken = fetch("http://localhost:5000/api/user/getUser/", {
+  var packToken = fetch("api/user/getUser/", {
     headers: {
       authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const fetchCardListPack = async () => {
   // };
   const packTokenNumber = await getTokenNumber();
   if (packTokenNumber > 0) {
-    fetch("http://localhost:5000/api/card/")
+    fetch("api/card/")
       .then((reponse) => reponse.json())
       .then((allSpikemmon) => {
         pack.style.display = "none";
