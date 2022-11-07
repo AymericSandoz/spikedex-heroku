@@ -1,7 +1,7 @@
 const express = require("express"); //framework qui permet de coder plus rapidement.
 require("dotenv").config({ path: "./config/.env" });
 const usersRoutes = require("./routes/user");
-const CardsRoutes = require("./routes/Card");
+const CardsRoutes = require("./routes/card");
 const path = require("path"); //accéder au path de notre serveur :
 const schedule = require("node-schedule");
 const helmet = require("helmet");
