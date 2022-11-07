@@ -21,6 +21,11 @@ const User = require("./models/user");
 // app.get("/", (req, res) => {
 //   res.sendFile("index.html", { root: path.join(__dirname, "./front") });
 // });
+app.use(express.static("./front"));
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: path.join(__dirname, "./front") });
+});
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); //accéder à notre API depuis n'importe quelle origine ( '*' )
   res.setHeader(
