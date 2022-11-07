@@ -96,10 +96,12 @@ exports.getOneCardById = (req, res, next) => {
 
 //Récupérer les cards
 exports.getAllCards = (req, res, next) => {
-  Card.find((err, docs) => {
-    if (!err) res.send(docs);
-    else res.send("Erreur :" + err);
-  }).sort({ createdAt: -1 });
+  // Card.find((err, docs) => {
+  //   if (!err) res.send(docs);
+  //   else res.send("Erreur :" + err);
+  // }).sort({ createdAt: -1 });
+
+  console.log("hello");
 };
 
 //Récupérer les cards
