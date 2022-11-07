@@ -53,7 +53,7 @@ const fetchCardList = () => {
     .then((reponse) => reponse.json())
     .then((allSpikemmon) => {
       console.log("allspikemon:", allSpikemmon);
-      createCard(allSpikemmon);
+      //createCard(allSpikemmon);
       chargement.style.display = "none";
       console.log(allSpikemmon);
     })
@@ -148,10 +148,10 @@ function createCard(arr) {
     // idCarte.innerText = `${arr[i].userName}`;
     const stars = document.createElement("p");
     stars.innerHTML = displayStars(arr[i].rarity);
-    // const imgCarte = document.createElement("img");
-    // imgCarte.src = arr[i].imageUrl;
+    const imgCarte = document.createElement("img");
+    imgCarte.src = arr[i].imageUrl;
 
-    // carte.appendChild(imgCarte);
+    carte.appendChild(imgCarte);
     carte.appendChild(txtCarte);
     carte.appendChild(stars);
     listePoke.appendChild(carte);
