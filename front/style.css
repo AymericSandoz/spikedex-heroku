@@ -1,0 +1,233 @@
+
+
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(45deg, rgb(255, 162, 162),rgb(162, 255, 243)) no-repeat center center fixed;
+          
+    background-size: auto 100%;
+    min-height:100%;
+}
+h1 {
+    text-align: center;
+    padding: 25px 0;
+    color: #000;
+}
+.spikedex {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size : 40px;
+    
+}
+.img-block img {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+}
+.recherche-poke {
+    max-width: 700px;
+    /* min-width: 450px; */
+    width: 70%;
+    margin: 30px auto;
+    position: relative;
+    display: flex;
+}
+.inp-group {
+    width: 100%;
+}
+.recherche-poke input {
+    width: 100%;
+    padding: 15px;
+    border: none; 
+    outline: none;
+    border-radius: 5px;
+}
+.recherche-poke label {
+    font-size: 21px;
+    position: absolute;
+    color: midnightblue;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in;
+    text-align: center;
+}
+.recherche-poke button {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 15px;
+    font-size: 20px;
+    background: #000;
+    color: #f1f1f1;
+    cursor: pointer;
+    transition: 
+    background 0.2s ease-in-out, color 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.recherche-poke button:hover {
+    background: rgb(119, 5, 5);
+    font-size: 25px;
+}
+.recherche-poke:focus-within label,
+.recherche-poke.active-input label {
+    top: -15px;
+}
+ul li {
+    cursor: pointer;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: auto;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+.liste-poke {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+.liste-poke li {
+    width: 230px;
+    height: 280px;
+    padding: 5px;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.5);
+    margin: 5px;
+    display: grid;
+    grid-template-rows: 220px 30px 30px;
+      justify-content: center;
+    align-items: center;
+    /*flex-direction: column; */
+    background-size: cover;
+    border-radius: 10px;
+}
+.liste-poke h5 {
+    font-size: 19px;
+    text-align :center;
+    align-items: center;
+}
+.liste-poke p {
+    font-size: 14px;
+    text-align :center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.liste-poke img {
+    width: 220px;
+    height:220px;
+    object-fit: cover;
+    overflow:hidden;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    
+}
+.loader {
+position: absolute;
+top: 250px;
+left: 50%;
+transform: translateX(-50%);
+width: 200px;
+height: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.loader img {
+    display:block;
+    margin-left: 4rem;
+    width: 100px;
+    height: 100px;
+    animation: monte 0.3s  alternate infinite;
+}
+
+.loader img:nth-child(1){
+    animation-delay:0.1s;
+}
+.loader img:nth-child(2){
+    animation-delay:0.2s;
+}
+.loader img:nth-child(3){
+    animation-delay:0.3s;
+}
+
+@keyframes monte {
+    100% {
+        transform: translateY(-50px)
+    }
+}
+
+
+/* TOogle switch css style */
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.toogle-container label {
+    margin-top: 30px;
+    margin-bottom: 30px;
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 100px;
+	height: 50px;
+	background: linear-gradient(45deg, rgb(255, 162, 162),rgb(162, 255, 243));
+  border: #000;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.toogle-container label:after {
+	content: '';
+	position: absolute;
+	
+	left: 5px;
+	width: 50px;
+	height: 50px;
+	background: black;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+/* input:checked + label {
+	background: yellow;
+} */
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 130px;
+}
+
+.toogle-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  
+}
+
+@media screen and (max-width: 700px) {
+    .recherche-poke label {
+      font-size:0.8em;
+    }
+  }

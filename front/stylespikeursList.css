@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(45deg, rgb(255, 162, 162),rgb(162, 255, 243)) no-repeat center center fixed;
+       
+    background-size: cover;
+    min-height:100%;
+}
+
+.liste-users{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px;
+    padding:50px;
+}
+
+.liste-users .carte{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 220px;
+    /* grid-template-columns: 200px 100px; */
+    /* grid-template-rows: 130px 40px; */
+    
+    padding: 10px;
+    margin:10px;
+    color : black;
+    box-shadow: 20px 12px 20px 0px black;
+    border-radius: 10px;
+}
+.liste-users p,.liste-users h5{
+    text-align: center;
+    
+}
+.liste-users h5 {
+    margin-top: 10px;
+}
+
+.liste-users img{
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0 ;
+}
+
+
+.cardsDetails {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 10px;
+}
+.liste-users .NbPokémon img{
+    width: 13px;
+    height: 13px;
+    object-fit: cover;
+}

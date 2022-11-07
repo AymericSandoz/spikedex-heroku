@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer ta carte spikemon</title>
+    <meta name="description" content="Formulaire de création de carte spikémon" />
+    <link rel="stylesheet" href="styleCreateCard.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrapper site-header__wrapper">
+    <a href="index.html" class="brand"><img class="logo" src="./images/pokedex.png" alt="Pokéball"></a>
+    
+<nav class="nav__links nav">
+
+
+</nav>
+</div>
+</header>
+    <!-- <nav>
+        <ul class="nav__links">
+
+        </ul>
+    </nav> -->
+
+    <h1 class="Create-card-title"> Créer ta carte Spikémon</h1>
+    <main>
+    <div class="card-preview">
+        
+    </div>
+    <form method="post"  class="create-card">
+        <div class="fake-form-card">
+        <!-- <h2> Ton pokémon</h2> -->
+<div class="spikemon">
+     
+      
+            <input type="text" name="Spikemon_name" id="Spikemon_name" placeholder="Spikatchu" required="true">
+      
+
+ 
+            <input type="number" placeholder="PV"  name="Pv_number" id="Pv_number" min="1" max="300"  id="quantity" required="true">
+       
+       
+                                <select name="type" id="type" required="true">
+                                    <option value="">Choisir un type</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Feu">Feu</option>
+                      <option value="Eau">Eau</option>
+                      <option value="Feuille">Feuille</option>
+                      <option value="Electrik">Electrik</option>
+                      <option value="Combat">Combat</option>
+                      <option value="Psy">Psy</option>
+                      <option value="Ténèbre">Ténèbre</option>
+                      <option value="Acier">Acier</option>
+
+                      
+
+                  </select>
+              
+                </div>
+                <label for="avatar" class="avatar-file"><i class="fa-solid fa-image"></i>Choisis ton Avatar</label>
+
+<input type="file"
+       id="avatar" name="avatar"  class="input-avatar"
+       accept="image/png, image/jpeg" required="true">
+                <!-- <h2> Attaque</h2> -->
+<div class="attack">
+
+                  <div class="attack_number_1">
+                    
+                    
+
+                    <!-- <label for="type_attack_1"> Quel type d'attaque ? </label> -->
+                                <select name="type_attack_1" id="type_attack_1" required="true">
+                                    <option value="">Choisir une attaque</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Feu">Feu</option>
+                                    <option value="Eau">Eau</option>
+                                    <option value="Feuille">Feuille</option>
+                                    <option value="Electrik">Electrik</option>
+                                    <option value="Combat">Combat</option>
+                                    <option value="Psy">Psy</option>
+                                    <option value="Dragon">Dragon</option>
+                                    <option value="Ténèbre">Ténèbre</option>
+                                    <option value="Acier">Acier</option>
+
+                      
+
+                  </select>
+                  <input type="text" name="attack_number_1" id="attack_number_1" placeholder="Fatal bloc" required="true" value="">
+                  <input type="number" name="Attack_1_number" id="attack_1_number" min="1" max="300"  required="true">
+                </div>
+
+                <div class="attack_number_2">
+                    
+
+                    <!-- <label for="type_attack_2"> Quel type d'attaque ? </label> -->
+                                <select name="type_attack_2" id="type_attack_2" required="true">
+                                    <option value="">Choisir une attaque</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Feu">Feu</option>
+                                    <option value="Eau">Eau</option>
+                                    <option value="Feuille">Feuille</option>
+                                    <option value="Electrik">Electrik</option>
+                                    <option value="Combat">Combat</option>
+                                    <option value="Psy">Psy</option>
+                                    <option value="Dragon">Dragon</option>
+                                    <option value="Ténèbre">Ténèbre</option>
+                                    <option value="Acier">Acier</option>
+
+                      
+
+                  </select>
+                  <input type="text" name="attack_number_2" id="attack_number_2" placeholder="Cut éclair" required="true">
+                  <input type="number" name="Attack_2_number" id="attack_2_number" min="1" max="300"  required="true">
+                </div>
+
+                </div>
+                <!-- <h2>Force and weakness</h2> -->
+                <div class="pokemon_details">
+                
+<div class="weakness"> 
+            <input type="text" name="weakness" id="weakness"  placeholder='weakness' required="true">
+</div>
+<div class="force"> 
+            <input type="text" name="force" id="force"  placeholder='force' required="true">
+</div>
+</div>
+<!-- <h2>Description</h2> -->
+                <div class="pokemon_description">
+
+<textarea id="pokemon_description" name="pokemon_description"
+          rows="4" cols="33" required="true" maxlength="50">
+</textarea>
+                </div>
+            </div>
+<div class="buttons">
+                <div class="preview" ><i class="fa-solid fa-eye"> </i>
+                    <div  type='button' class= "preview-button" value="Preview !">Preview</div>
+               </div>
+                
+                <input type="submit" class="send-button" value="Envoyer">
+            </div>
+    </form>
+</main>
+    <div>
+        <p class ="error-message"></p>
+    </div>
+    <script src =navbar.js></script>
+    <script src="createCard.js"></script>
+</body>
+
+</html>

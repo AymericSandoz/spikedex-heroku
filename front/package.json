@@ -1,0 +1,14 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server .  -p 3000 -P \"http://localhost:3000?\"  -c-1 "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv-webpack": "^8.0.1"
+  }
+}

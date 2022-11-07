@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Cache-control" content="no-cache">
+        <title>Pokemon pack</title>
+        <meta name="description" content="Ouverture de pack" />
+        <link rel="stylesheet" href="packOpener.css">
+        <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+        />
+      
+    </head>
+
+    <body>
+        <header class="site-header">
+            <div class="wrapper site-header__wrapper">
+                <a href="index.html" class="brand"><img class="logo" src="./images/pokedex.png" alt="Pokéball"></a>
+              
+        <nav class="nav__links nav">
+       
+    
+    </nav>
+    </div>
+    </header>
+
+
+        <div class="pokemon-pack">
+            <div class="message-pack"></div>
+            <img src="images/cartePokemon.png" class='img-pokemon-pack' alt="carte pokemon">
+            
+        </div>
+        <div class="loader" style="display:none;">
+            <img src="images/pokedex.png" alt="pokeball loader">
+            <img src="images/pokedex.png" alt="pokeball loader">
+            <img src="images/pokedex.png" alt="pokeball loader">
+        </div>
+        
+        <div id="pokemon-cards-opened" style="display:none;">
+            <!-- <div class="pokemon-card">
+                <img id="0" src="./pokemon-cards/base set (10).jpg">
+            </div>
+            <div class="pokemon-card">
+                <img id="1" src="./pokemon-cards/base set (10).jpg">
+            </div> -->
+        </div>
+        <script src="html2canvas.js" ></script>
+        <script src="saveAs.js" ></script>
+        <!-- <script src="toBlob.js" ></script> -->
+        <!-- <script src="./node_modules/dom-to-image-more/dist/dom-to-image-more.min.js" ></script> -->
+        <script src="./node_modules/dom-to-image/dist/dom-to-image.min.js" ></script>
+        <script src =navbar.js></script>
+        <script type="module" src="./packOpener.js"></script>
+    </body>
+    
+</html>

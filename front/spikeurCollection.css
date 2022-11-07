@@ -1,0 +1,117 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(45deg, rgb(255, 162, 162),rgb(162, 255, 243)) no-repeat center center fixed;
+       
+    background-size: cover;
+    min-height:100%;
+}
+.name-section {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.name-section h3 {
+    font-size: 30px;
+    }
+
+    .name-section h5 {
+        font-size: 20px;
+        }
+ul li {
+    cursor: pointer;
+    
+}
+.container {
+    display: flex;
+    width: 70%;
+    height: auto;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+.liste-poke li {
+    width: 230px;
+    height: 280px;
+    padding: 5px;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.5);
+    margin: 5px;
+    display: grid;
+    grid-template-rows: 220px 30px 30px;
+      justify-content: center;
+    align-items: center;
+    /*flex-direction: column; */
+    background-size: cover;
+    border-radius: 10px;
+}
+.liste-poke h5 {
+    font-size: 19px;
+    text-align :center;
+    align-items: center;
+}
+.liste-poke p {
+    font-size: 14px;
+    text-align :center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.liste-poke img {
+    width: 220px;
+    height:220px;
+    object-fit: cover;
+    overflow:hidden;
+    box-shadow: 0 2px 2px 2px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+.loader {
+position: absolute;
+top: 250px;
+left: 50%;
+transform: translateX(-50%);
+width: 200px;
+height: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.loader img {
+    display:block;
+    margin-left: 4rem;
+    width: 100px;
+    height: 100px;
+    animation: monte 0.3s  alternate infinite;
+}
+
+.loader img:nth-child(1){
+    animation-delay:0.1s;
+}
+.loader img:nth-child(2){
+    animation-delay:0.2s;
+}
+.loader img:nth-child(3){
+    animation-delay:0.3s;
+}
+
+@keyframes monte {
+    100% {
+        transform: translateY(-50px)
+    }
+}

@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /spikeursList.html
+Disallow: /uploadProfil.html
+Disallow: /spikeurCollection.html
+Disallow: /packOpener.html
+Disallow: /myCards.html
+Disallow: /log.html
+Disallow: /cartePokemon.html
