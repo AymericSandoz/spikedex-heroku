@@ -21,10 +21,6 @@ const User = require("./models/user");
 // app.get("/", (req, res) => {
 //   res.sendFile("index.html", { root: path.join(__dirname, "./front") });
 // });
-app.use(express.static("./front"));
-app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: path.join(__dirname, "./front") });
-});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); //accéder à notre API depuis n'importe quelle origine ( '*' )
@@ -83,6 +79,12 @@ console.log(path.join(path.join(__dirname, "images")));
 // console.log(path.join(path.join(__dirname, "images")));
 app.use("/api/card", CardsRoutes);
 app.use("/api/user", usersRoutes);
+
+app.use(express.static("./front"));
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: path.join(__dirname, "./front") });
+});
+
 //server
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);
