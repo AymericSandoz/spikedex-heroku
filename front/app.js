@@ -32,8 +32,8 @@ const fetchCardList = () => {
   fetch(`api/card/`)
     .then((reponse) => reponse.json())
     .then((allSpikemmon) => {
-      //createCard(allSpikemmon);
-      // chargement.style.display = "none";
+      createCard(allSpikemmon);
+      chargement.style.display = "none";
       console.log(allSpikemmon);
     })
     .catch((error) => {
