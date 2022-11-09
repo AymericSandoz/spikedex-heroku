@@ -27,7 +27,7 @@ body {
     background: linear-gradient(45deg, rgb(255, 162, 162),rgb(162, 255, 243)) no-repeat center center fixed;
   
     min-height:100%;
-    min-width: 470px
+    min-width: 470px;
  
 }
 

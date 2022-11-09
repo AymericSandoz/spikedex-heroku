@@ -8,7 +8,6 @@ const nameSection = document.querySelector(".name-section");
 const listePoke = document.querySelector(".liste-poke");
 nameSection.innerHTML = `
 <h3>${name2}</h3>
-<h5>${pseudo}</h5>
 `;
 // const types = {
 //   Feuille: "#78c850",
