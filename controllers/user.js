@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const cloudinary = require("../utils/cloudinary");
 //Inscriptions des utilisateurs
 exports.signup = (req, res, next) => {
   bcrypt
@@ -97,7 +97,8 @@ exports.getUser = (req, res, next) => {
     });
 };
 
-exports.uploadProfil = (req, res, next) => {
+exports.uploadProfil = async (req, res, next) => {
+  const result = await cloudinary.uploader.upload(req.file.path);
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -105,9 +106,11 @@ exports.uploadProfil = (req, res, next) => {
       const profilObject = req.file
         ? {
             ...req.body,
-            imageUrl: `${req.protocol}://${req.get("host")}/images/${
-              req.file.filename
-            }`,
+            imageUrl: result.secure_url,
+            cloudinary_id: result.public_id,
+            // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+            //   req.file.filename
+            // }`,
           }
         : { ...req.body };
       delete profilObject._userId;

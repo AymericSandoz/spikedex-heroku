@@ -41,10 +41,10 @@ exports.createCard = async (req, res, next) => {
 
         weakness: req.body.weakness,
         force: req.body.force,
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
-        profile_img: result.secure_url,
+        // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+        //   req.file.filename
+        // }`,
+        imageUrl: result.secure_url,
         cloudinary_id: result.public_id,
       });
       console.log(card.imageUrl, "/////kkkkkkk////", req.fileUrl);
