@@ -1,7 +1,7 @@
 const Card = require("../models/card");
 const User = require("../models/user");
 const cloudinary = require("../utils/cloudinary");
-const multer = require("../utils/multer");
+const upload = require("../utils/multer");
 const mongoose = require("mongoose");
 //créer un post
 exports.createCard =
