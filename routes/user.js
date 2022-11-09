@@ -12,5 +12,5 @@ router.post("/login", userCtrl.login); //COnnexion
 router.get("/getOneUser/:userId", userCtrl.getOneUser); //COnnexion
 router.get("/getUsers", userCtrl.getAllUsers); //COnnexion
 router.get("/getUser", auth, userCtrl.getUser);
-router.put("/uploadProfil", auth, multer, userCtrl.uploadProfil);
+router.put("/uploadProfil", auth, userCtrl.uploadProfil);
 module.exports = router; //exportations de notre routeur
