@@ -132,7 +132,7 @@ const openPack = (allSpikemmon) => {
     let hasardNumber = getRandomInt(allSpikemmon.length);
     let hasardProba = Math.random();
 
-    if (allSpikemmon[hasardNumber].weight > hasardProba) {
+    if (allSpikemmon[hasardNumber].weight / 100 > hasardProba) {
       tableauFinal.push(allSpikemmon[hasardNumber]);
       i++;
       console.log(i);
