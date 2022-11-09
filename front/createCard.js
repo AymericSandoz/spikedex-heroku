@@ -54,7 +54,7 @@ let cardPreview = document.querySelector(".card-preview");
 // </span>`;
 
 const submitForm = (data) => {
-  fetch("http://localhost:5000/api/card/", {
+  fetch("api/card/", {
     method: "POST",
     headers: {
       authorization: `Bearer ${localStorage.getItem("token")}`,
