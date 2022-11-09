@@ -4,73 +4,71 @@ const cloudinary = require("../utils/cloudinary");
 const upload = require("../utils/multer");
 const mongoose = require("mongoose");
 //créer un post
-exports.createCard =
-  (upload.single("image"),
-  async (req, res, next) => {
-    const createCardErrors = (errors) => {
-      let error = "";
+exports.createCard = async (req, res, next) => {
+  const createCardErrors = (errors) => {
+    let error = "";
 
-      if (errors.message.includes("duplicate key error collection"))
-        error = "Oups...Le nom de ton Spikemon est déja utilisé :/";
-      else {
-        error = errors;
-      }
+    if (errors.message.includes("duplicate key error collection"))
+      error = "Oups...Le nom de ton Spikemon est déja utilisé :/";
+    else {
+      error = errors;
+    }
 
-      return error;
-    };
-    const result = await cloudinary.uploader.upload(req.file.path);
+    return error;
+  };
+  const result = await cloudinary.uploader.upload(req.file.path);
 
-    User.findOne({ _id: req.auth.userId })
-      .then((user) => {
-        const userEmail = user.email;
-        const userPseudo = user.pseudo;
-        const userName = user.pseudo;
-        console.log(result.secure_url, "/////", result.public_id);
-        var card = new Card({
-          userId: req.auth.userId,
-          userEmail: userEmail,
-          userName: userName,
-          userPseudo: userPseudo,
-          description: req.body.description,
-          name: req.body.name,
-          type: req.body.type,
-          pv: req.body.pv,
-          attaque1: req.body.attaque1,
-          attaque2: req.body.attaque2,
-          attaque1Type: req.body.attaque1Type,
-          attaque2Type: req.body.attaque2Type,
-          attaque1power: req.body.Attack_1_number,
-          attaque2power: req.body.Attack_2_number,
+  User.findOne({ _id: req.auth.userId })
+    .then((user) => {
+      const userEmail = user.email;
+      const userPseudo = user.pseudo;
+      const userName = user.pseudo;
+      console.log(result.secure_url, "/////", result.public_id);
+      var card = new Card({
+        userId: req.auth.userId,
+        userEmail: userEmail,
+        userName: userName,
+        userPseudo: userPseudo,
+        description: req.body.description,
+        name: req.body.name,
+        type: req.body.type,
+        pv: req.body.pv,
+        attaque1: req.body.attaque1,
+        attaque2: req.body.attaque2,
+        attaque1Type: req.body.attaque1Type,
+        attaque2Type: req.body.attaque2Type,
+        attaque1power: req.body.Attack_1_number,
+        attaque2power: req.body.Attack_2_number,
 
-          weakness: req.body.weakness,
-          force: req.body.force,
-          // imageUrl: `${req.protocol}://${req.get("host")}/images/${
-          //   req.file.filename
-          // }`,
-          imageUrl: result.secure_url,
-          cloudinary_id: result.public_id,
-        });
-        console.log(card.imageUrl, "/////kkkkkkk////", req.fileUrl);
-        card
-          .save()
-          .then((doc) => {
-            console.log(doc);
-            res.status(201).json({ message: "card saved !" });
-          })
-          .catch((error) => {
-            console.log(error);
-            res.status(404).json({
-              error: createCardErrors(error),
-            });
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-        res.status(500).json({
-          error: error,
-        });
+        weakness: req.body.weakness,
+        force: req.body.force,
+        // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+        //   req.file.filename
+        // }`,
+        imageUrl: result.secure_url,
+        cloudinary_id: result.public_id,
       });
-  });
+      console.log(card.imageUrl, "/////kkkkkkk////", req.fileUrl);
+      card
+        .save()
+        .then((doc) => {
+          console.log(doc);
+          res.status(201).json({ message: "card saved !" });
+        })
+        .catch((error) => {
+          console.log(error);
+          res.status(404).json({
+            error: createCardErrors(error),
+          });
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({
+        error: error,
+      });
+    });
+};
 
 //récupérer une carte
 exports.getOneCard = (req, res, next) => {
