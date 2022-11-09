@@ -1,8 +1,9 @@
 const Card = require("../models/card");
 const User = require("../models/user");
+const cloudinary = require("../utils/cloudinary");
 const mongoose = require("mongoose");
 //créer un post
-exports.createCard = (req, res, next) => {
+exports.createCard = async (req, res, next) => {
   const createCardErrors = (errors) => {
     let error = "";
 
@@ -14,12 +15,14 @@ exports.createCard = (req, res, next) => {
 
     return error;
   };
+  const result = await cloudinary.uploader.upload(req.file.path);
+
   User.findOne({ _id: req.auth.userId })
     .then((user) => {
       const userEmail = user.email;
       const userPseudo = user.pseudo;
       const userName = user.pseudo;
-      console.log("hello crd");
+      console.log(result.secure_url, "/////", result.public_id);
       var card = new Card({
         userId: req.auth.userId,
         userEmail: userEmail,
@@ -41,8 +44,10 @@ exports.createCard = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
           req.file.filename
         }`,
+        profile_img: result.secure_url,
+        cloudinary_id: result.public_id,
       });
-      console.log(card);
+      console.log(card.imageUrl, "/////kkkkkkk////", req.fileUrl);
       card
         .save()
         .then((doc) => {

@@ -1,7 +1,7 @@
 console.log("lets gooooooooooooo");
 const listeUsers = document.querySelector(".liste-users");
 
-fetch("http://localhost:5000/api/user/getUsers/")
+fetch("api/user/getUsers/")
   .then(function (res) {
     if (res.ok) {
       return res.json();

@@ -5,6 +5,7 @@ const router = express.Router(); //création d'un routeur express dans lequel on
 const stuffCtrl = require("../controllers/card");
 const auth = require("../middleware/auth"); //auth
 const multer = require("../middleware/multer"); //gestions des images
+
 //Routes
 
 router.get("/ownerCards", auth, stuffCtrl.getOwnCards);

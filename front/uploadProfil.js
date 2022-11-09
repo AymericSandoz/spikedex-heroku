@@ -1,6 +1,6 @@
 const Profil = document.querySelector("main");
 var update = new Object();
-fetch(`http://localhost:5000/api/user/getUser`, {
+fetch(`api/user/getUser`, {
   headers: {
     authorization: `Bearer ${localStorage.getItem("token")}`,
     "Content-Type": "application/json",
@@ -259,7 +259,7 @@ const updateProfil = (user) => {
 //
 const submitForm = (data) => {
   console.log(data);
-  fetch("http://localhost:5000/api/user/uploadProfil/", {
+  fetch("api/user/uploadProfil/", {
     method: "PUT",
     headers: {
       authorization: `Bearer ${localStorage.getItem("token")}`,

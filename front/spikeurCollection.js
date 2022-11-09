@@ -44,7 +44,7 @@ console.log(userId);
 //     console.log(err);
 //     alert("Une erreur est survenue");
 //   });
-fetch(`http://localhost:5000/api/user/getOneUser/${userId}`)
+fetch(`api/user/getOneUser/${userId}`)
   .then(function (res) {
     if (res.ok) {
       return res.json();
@@ -62,7 +62,7 @@ fetch(`http://localhost:5000/api/user/getOneUser/${userId}`)
 const getAllUserCards = (cardsId) => {
   console.log(cardsId);
   for (let i = 0; i < cardsId.length; i++) {
-    fetch(`http://localhost:5000/api/card/getOneCardById/${cardsId[i]}`)
+    fetch(`api/card/getOneCardById/${cardsId[i]}`)
       .then(function (res) {
         if (res.ok) {
           return res.json();

@@ -168,7 +168,7 @@ mdp2Inscription.addEventListener("change", function () {
 /////****************fonction pour envoyer le formulaire d'inscription***************************
 const submitInscriptionForm = () => {
   console.log(inscription);
-  fetch("http://localhost:5000/api/user/signup", {
+  fetch("api/user/signup", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -203,7 +203,7 @@ emailConnexion.addEventListener("change", function () {
 /////****************fonction pour envoyer le formulaire de connexion***************************
 const submitConnexionForm = () => {
   console.log(connexion);
-  fetch("http://localhost:5000/api/user/login", {
+  fetch("api/user/login", {
     method: "POST",
     headers: {
       "Content-type": "application/json",

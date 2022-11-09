@@ -82,7 +82,7 @@ const fetchCardListPack = async () => {
 };
 
 const savePackCards = (data) => {
-  fetch("http://localhost:5000/api/card/packOpener", {
+  fetch("api/card/packOpener", {
     method: "POST",
     mode: "cors",
     headers: {
@@ -113,7 +113,7 @@ function getRandomInt(max) {
 
 const tableauFinal = [];
 const openPack = (allSpikemmon) => {
-  fetch("http://localhost:5000/api/card/actTokenPackNb", {
+  fetch("api/card/actTokenPackNb", {
     method: "PATCH",
     headers: {
       authorization: `Bearer ${localStorage.getItem("token")}`,

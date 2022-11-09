@@ -32,7 +32,7 @@ const types = {
 // }
 
 const fetchCardList = () => {
-  fetch("http://localhost:5000/api/card/ownerCards")
+  fetch("api/card/ownerCards")
     .then((reponse) => reponse.json())
     .then((allSpikemmon) => {
       createCard(allSpikemmon);

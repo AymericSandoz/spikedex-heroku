@@ -1,6 +1,6 @@
 const listePoke = document.querySelector(".liste-poke");
 
-fetch(`http://localhost:5000/api/user/getUser`, {
+fetch(`api/user/getUser`, {
   headers: {
     authorization: `Bearer ${localStorage.getItem("token")}`,
     "Content-Type": "application/json",
@@ -24,7 +24,7 @@ fetch(`http://localhost:5000/api/user/getUser`, {
 const getAllUserCards = (cardsId) => {
   console.log(cardsId);
   for (let i = 0; i < cardsId.length; i++) {
-    fetch(`http://localhost:5000/api/card/getOneCardById/${cardsId[i]}`)
+    fetch(`api/card/getOneCardById/${cardsId[i]}`)
       .then(function (res) {
         if (res.ok) {
           return res.json();

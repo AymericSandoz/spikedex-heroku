@@ -7,7 +7,7 @@ var nameItem = url.searchParams.get("name");
 //var idItem = "633e07b48d77b66d3d634134";
 /************ <!--  Promesse qui va rechercher 1 produit définit par son ID --> *************/
 
-fetch("http://localhost:5000/api/card/name/" + nameItem)
+fetch("api/card/name/" + nameItem)
   .then(function (res) {
     if (res.ok) {
       return res.json();

@@ -21,6 +21,8 @@ const cartSchema = mongoose.Schema(
     force: { type: String },
     description: { type: String },
     imageUrl: { type: String },
+    profile_img: { type: String },
+    cloudinary_id: { type: String },
     usersLiked: [(type = String)],
     comments: {
       type: [

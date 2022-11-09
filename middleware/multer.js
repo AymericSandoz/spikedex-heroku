@@ -1,6 +1,6 @@
 const multer = require("multer"); //package qui nous permet de gérer les fichiers entrants dans les requêtes HTTP.
 
-//permet aux users de télécharger des images
+const path = require("path");
 
 //résoudre l'extension de fichier
 const MIME_TYPES = {
