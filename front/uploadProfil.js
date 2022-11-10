@@ -92,6 +92,21 @@ const displayUserStars = (user) => {
   return result;
 };
 
+const updateUpdatedProfil = (user) => {
+  console.log("updateUpdatedProfil", user);
+  let profilImg = document.querySelector("img");
+  console.log(profilImg);
+  profilImg.innerHTML = user.imageUrl;
+
+  let name = document.querySelector("h5");
+
+  name.innerHTML = user.pseudo;
+
+  let pseudo = document.querySelector(".profil p");
+
+  pseudo.innerHTML = user.name;
+};
+
 const displayBackgroundColor = (user) => {
   if (user.cardsId.length >= 50) {
     backgroundcolor =
@@ -223,7 +238,6 @@ const updateProfil = (user) => {
     if (update.pseudo) {
       data.append("pseudo", update.pseudo);
     }
-    console.log(update);
     submitForm(data);
   });
   let btnPassword = document.querySelector(".btn-mdp");
@@ -236,12 +250,10 @@ const updateProfil = (user) => {
       passwordSection.classList.remove("active");
 
       delete update["password"];
-      console.log("loup");
     } else {
       passwordSection.style.display = "block";
       passwordSection.classList.add("active");
       update.password = this.value;
-      console.log(update);
     }
   });
 
@@ -258,8 +270,7 @@ const updateProfil = (user) => {
 
 //
 const submitForm = (data) => {
-  console.log(data);
-  fetch("api/user/uploadProfil/", {
+  fetch("api/user/uploadProfil", {
     method: "PUT",
     headers: {
       authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -269,8 +280,7 @@ const submitForm = (data) => {
     .then((reponse) => reponse.json())
     .then((response) => {
       console.log(response);
-
-      //location.reload();
+      updateUpdatedProfil(response);
     })
     .catch((error) => {
       console.log(error);

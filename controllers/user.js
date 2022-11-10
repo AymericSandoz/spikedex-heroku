@@ -97,42 +97,186 @@ exports.getUser = (req, res, next) => {
     });
 };
 
-exports.uploadProfil = async (req, res, next) => {
-  const result = await cloudinary.uploader.upload(req.file.path);
-  bcrypt
-    .hash(req.body.password, 10)
-    .then((hash) => {
-      //////////////////////////////////
-      const profilObject = req.file
-        ? {
-            ...req.body,
-            imageUrl: result.secure_url,
-            cloudinary_id: result.public_id,
-            // imageUrl: `${req.protocol}://${req.get("host")}/images/${
-            //   req.file.filename
-            // }`,
-          }
-        : { ...req.body };
-      delete profilObject._userId;
-      User.findOne({ _id: req.auth.userId })
-        .then((user) => {
-          if (user._id != req.auth.userId) {
-            res.status(403).json({ message: "unauthorized request" });
-          } else {
-            User.updateOne(
-              { _id: req.auth.userId },
-              { ...profilObject, password: hash, _id: req.auth.userId }
-            )
-              .then(() => res.status(200).json({ message: "Object modified!" }))
-              .catch((error) => res.status(401).json({ error }));
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          res.status(500).json({ error });
-        });
+// exports.uploadProfil = async (req, res, next) => {
+//   console.log("upload profil");
+//   console.log("req:", req.body);
 
-      /////////////////////
-    })
-    .catch((error) => res.status(500).json({ error })); //res.status(500).json({ error })
+//   if (req.file) {
+//     var result = await cloudinary.uploader.upload(req.file.path);
+//   }
+
+//   console.log("etape2");
+//   console.log("req.body.password", req.body.password);
+
+//   ////////////////////////////SI le mdp est modifié
+
+//   if (req.body.password) {
+//     bcrypt
+//       .hash(req.body.password, 10)
+//       .then((hash) => {
+//         //////////////////////////////////
+//         const profilObject = req.file
+//           ? {
+//               ...req.body,
+//               imageUrl: result.secure_url,
+//               cloudinary_id: result.public_id,
+//               // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+//               //   req.file.filename
+//               // }`,
+//             }
+//           : { ...req.body };
+
+//         console.log(profilObject);
+//         delete profilObject._userId;
+//         User.findOne({ _id: req.auth.userId })
+//           .then((user) => {
+//             if (user._id != req.auth.userId) {
+//               res.status(403).json({ message: "unauthorized request" });
+//             } else {
+//               User.updateOne(
+//                 { _id: req.auth.userId },
+//                 { ...profilObject, password: hash, _id: req.auth.userId }
+//               )
+//                 .then(() =>
+//                   res.status(200).json({ message: "Object modified!" })
+//                 )
+//                 .catch((error) => res.status(401).json({ error }));
+//             }
+//           })
+//           .catch((error) => {
+//             console.log(error);
+//             res.status(500).json({ error });
+//           });
+
+//         /////////////////////
+//       })
+//       .catch((error) => res.status(500).json({ error })); //res.status(500).json({ error })
+//   }
+
+//   ///////////SI le mdp n'est pas modifié
+//   else {
+//     const profilObject = req.file
+//       ? {
+//           ...req.body,
+//           imageUrl: result.secure_url,
+//           cloudinary_id: result.public_id,
+//           // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+//           //   req.file.filename
+//           // }`,
+//         }
+//       : { ...req.body };
+
+//     console.log(profilObject);
+//     delete profilObject._userId;
+//     User.findOne({ _id: req.auth.userId })
+//       .then((user) => {
+//         if (user._id != req.auth.userId) {
+//           res.status(403).json({ message: "unauthorized request" });
+//         } else {
+//           User.updateOne(
+//             { _id: req.auth.userId },
+//             { ...profilObject, _id: req.auth.userId }
+//           )
+//             .then((user) => res.status(200).json(user))
+//             .catch((error) => res.status(401).json({ error }));
+//         }
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//         res.status(500).json({ error });
+//       });
+//   }
+// };
+
+exports.uploadProfil = async (req, res, next) => {
+  console.log("upload profil");
+  console.log("req:", req.body);
+
+  if (req.file) {
+    var result = await cloudinary.uploader.upload(req.file.path);
+  }
+
+  console.log("etape2");
+  console.log("req.body.password", req.body.password);
+
+  ////////////////////////////SI le mdp est modifié
+
+  if (req.body.password) {
+    bcrypt
+      .hash(req.body.password, 10)
+      .then((hash) => {
+        //////////////////////////////////
+        const profilObject = req.file
+          ? {
+              ...req.body,
+              imageUrl: result.secure_url,
+              cloudinary_id: result.public_id,
+              // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+              //   req.file.filename
+              // }`,
+            }
+          : { ...req.body };
+
+        console.log(profilObject);
+        delete profilObject._userId;
+        User.findOne({ _id: req.auth.userId })
+          .then((user) => {
+            if (user._id != req.auth.userId) {
+              res.status(403).json({ message: "unauthorized request" });
+            } else {
+              User.findByIdAndUpdate(
+                { _id: req.auth.userId },
+                { ...profilObject, password: hash, _id: req.auth.userId },
+                { new: true }
+              )
+                .then(() =>
+                  res.status(200).json({ message: "Object modified!" })
+                )
+                .catch((error) => res.status(401).json({ error }));
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            res.status(500).json({ error });
+          });
+
+        /////////////////////
+      })
+      .catch((error) => res.status(500).json({ error })); //res.status(500).json({ error })
+  }
+
+  ///////////SI le mdp n'est pas modifié
+  else {
+    const profilObject = req.file
+      ? {
+          ...req.body,
+          imageUrl: result.secure_url,
+          cloudinary_id: result.public_id,
+          // imageUrl: `${req.protocol}://${req.get("host")}/images/${
+          //   req.file.filename
+          // }`,
+        }
+      : { ...req.body };
+
+    console.log(profilObject);
+    delete profilObject._userId;
+    User.findOne({ _id: req.auth.userId })
+      .then((user) => {
+        if (user._id != req.auth.userId) {
+          res.status(403).json({ message: "unauthorized request" });
+        } else {
+          User.findByIdAndUpdate(
+            { _id: req.auth.userId },
+            { ...profilObject, _id: req.auth.userId },
+            { new: true }
+          )
+            .then((user) => res.status(200).json(user))
+            .catch((error) => res.status(401).json({ error }));
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json({ error });
+      });
+  }
 };

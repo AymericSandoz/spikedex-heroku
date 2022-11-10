@@ -20,6 +20,7 @@ const userSchema = mongoose.Schema({
   nbCardCreated: { type: Number, default: 0 },
   location: { type: String, default: 29 },
   imageUrl: { type: String },
+  cloudinary_id: { type: String },
 });
 
 userSchema.plugin(uniqueValidator);

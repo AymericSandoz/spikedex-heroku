@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router(); //création d'un routeur express dans lequel on va enregistrer nos routes
 const auth = require("../middleware/auth"); //auth
 
-const multer = require("../middleware/multer"); //gestions des images
 //Importation controller
 const userCtrl = require("../controllers/user");
+const multer = require("../middleware/multer"); //gestions des images
 
 //Routes
 router.post("/signup", userCtrl.signup); //Inscription

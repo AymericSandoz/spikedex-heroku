@@ -200,7 +200,7 @@ const displayOneCard = (card, i) => {
     </span>
     <span class="character-stat">
       <p class = "force-weakness" >force</p>
-      <p > ${card.weakness}</p>
+      <p > ${card.force}</p>
     </span>
    
   </section>

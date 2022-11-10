@@ -1,5 +1,6 @@
 const multer = require("multer");
 const path = require("path");
+console.log("multer called");
 // Multer config
 module.exports = multer({
   storage: multer.diskStorage({}),
