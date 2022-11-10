@@ -29,6 +29,7 @@ let inscription = new Object();
 
 var errorinscription = "";
 var errorinscriptionMsg = document.querySelector("#inscriptionError");
+
 var accentedCharacters =
   "àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ";
 console.log("hellllllo");
@@ -48,26 +49,32 @@ inscriptionForm.addEventListener("submit", function (e) {
     validEmail(emailInscription) &&
     validname(nameInscription) &&
     validPseudo(pseudoInscription) &&
-    inscription.mdp == inscription.mdp2
+    inscription.mdp == inscription.mdp2 &&
+    inscription.mdp.length >= 5
   ) {
     console.log("submitform");
     submitInscriptionForm();
   } else {
     console.log(errorinscription);
-    if (inscription.mdp != inscription.mdp2) {
-      if (
-        validEmail(emailInscription) &&
-        validname(nameInscription) &&
-        validPseudo(pseudoInscription)
-      ) {
-        errorinscription = "Les mdp sont différents";
-      } else {
-        errorinscription =
-          errorinscription + " et " + "les mdp sont différents";
+    if (inscription.mdp.length >= 5) {
+      if (inscription.mdp != inscription.mdp2) {
+        if (
+          validEmail(emailInscription) &&
+          validname(nameInscription) &&
+          validPseudo(pseudoInscription)
+        ) {
+          errorinscription = "Les mdp sont différents";
+        } else {
+          errorinscription =
+            errorinscription + " et " + "les mdp sont différents";
+        }
       }
+    } else {
+      errorinscription = "Le mdp doit contenir au moins 5 caractères";
     }
 
     errorinscriptionMsg.innerHTML = errorinscription;
+
     alert("Les champs ne sont pas correctement renseignés");
   }
 });
@@ -174,13 +181,25 @@ const submitInscriptionForm = () => {
       "Content-type": "application/json",
     },
     body: JSON.stringify(inscription),
-  });
-
-  document.location.href = `log.html`;
-  // let result = await response.json();
-
-  // orderId = result.orderId;
-  // document.location.href = `confirmation.html?id=${orderId}`;
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((response) => {
+      console.log(response);
+      if (response.errors) {
+        if (response.errors.email) {
+          errorinscriptionMsg.innerHTML = "email déja utilisé";
+        } else if (response.errors.pseudo) {
+          errorinscriptionMsg.innerHTML = "pseudo déja utilisé...oups";
+        }
+      } else {
+        document.location.href = `log.html`;
+      }
+    })
+    .catch((error) => {
+      console.log("error");
+    });
 };
 
 ///////////////////////Connexion

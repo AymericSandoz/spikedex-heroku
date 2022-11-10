@@ -1,5 +1,6 @@
 // import * as htmlToImage from "html-to-image";
 // import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+
 var pack = document.querySelector(".pokemon-pack");
 var packImg = document.querySelector(".img-pokemon-pack");
 var messagePack = document.querySelector(".message-pack");
@@ -351,6 +352,7 @@ const downloadCard = (idCardToDownload, i) => {
   let scale = 2;
   console.log("les guepars sont des ....................;");
   btn.addEventListener("click", function () {
+    console.log("download");
     domtoimage
       .toBlob(cardToDownload, {
         style: style,

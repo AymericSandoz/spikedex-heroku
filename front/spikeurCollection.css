@@ -32,6 +32,8 @@ ul li {
 .container {
     display: flex;
     width: 70%;
+    
+    justify-content: space-around;
     height: auto;
     max-width: 1100px;
     margin: 0 auto;
