@@ -8,7 +8,6 @@ fetch("api/user/getUsers/")
     }
   })
   .then(function (users) {
-    console.log(users);
     createUserList(users);
   })
   .catch(function (err) {
@@ -64,7 +63,7 @@ const createUserList = (arr) => {
     cardsDetails.appendChild(stars);
     cardsDetails.appendChild(divNbPokemon);
     carte.style.background = displayBackgroundColor(arr[i]);
-    console.log(carte);
+
     listeUsers.appendChild(carte);
   }
 };

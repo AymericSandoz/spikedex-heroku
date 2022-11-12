@@ -13,7 +13,6 @@ fetch(`api/user/getUser`, {
     }
   })
   .then(function (user) {
-    console.log(user);
     createProfil(user);
     updateProfil(user);
   })
@@ -64,7 +63,7 @@ const createProfil = (user) => {
   cardsDetails.appendChild(stars);
   cardsDetails.appendChild(divNbPokemon);
   profil.style.background = displayBackgroundColor(user);
-  console.log(profil);
+
   Profil.appendChild(profil);
 };
 
@@ -93,9 +92,8 @@ const displayUserStars = (user) => {
 };
 
 const updateUpdatedProfil = (user) => {
-  console.log("updateUpdatedProfil", user);
   let profilImg = document.querySelector("img");
-  console.log(profilImg);
+
   profilImg.innerHTML = user.imageUrl;
 
   let name = document.querySelector("h5");
@@ -194,30 +192,29 @@ const updateProfil = (user) => {
   cardHeader.style.background = displayBackgroundColor(user);
   let updateName = document.querySelector("#inputUsername");
 
-  console.log(updateName);
   updateName.addEventListener("change", function () {
     update.name = this.value;
   });
   let updateEmail = document.querySelector(".email-update");
-  console.log(updateEmail);
+
   updateEmail.addEventListener("change", function () {
     update.email = this.value;
   });
 
   let updatePseudo = document.querySelector(".pseudo-update");
-  console.log(updatePseudo);
+
   updatePseudo.addEventListener("change", function () {
     update.pseudo = this.value;
   });
 
   let updateLocation = document.querySelector(".location-update");
-  console.log(updateLocation);
+
   updateLocation.addEventListener("change", function () {
     update.location = this.value;
   });
 
   let savebtn = document.querySelector(".btn-enregistrer");
-  console.log(savebtn);
+
   savebtn.addEventListener("click", function () {
     const data = new FormData();
     if (update.name) {
@@ -243,7 +240,7 @@ const updateProfil = (user) => {
   let btnPassword = document.querySelector(".btn-mdp");
   let passwordSection = document.querySelector(".password");
   let inputPassword = document.querySelector("#inputPassword");
-  console.log(btnPassword);
+
   btnPassword.addEventListener("click", function () {
     if (passwordSection.classList.contains("active")) {
       passwordSection.style.display = "none";
@@ -279,7 +276,6 @@ const submitForm = (data) => {
   })
     .then((reponse) => reponse.json())
     .then((response) => {
-      console.log(response);
       updateUpdatedProfil(response);
     })
     .catch((error) => {

@@ -13,16 +13,13 @@ fetch(`api/user/getUser`, {
     }
   })
   .then(function (user) {
-    console.log(user);
     getAllUserCards(user.cardsId);
   })
   .catch(function (err) {
-    console.log(err);
     alert("Une erreur est survenue");
   });
 
 const getAllUserCards = (cardsId) => {
-  console.log(cardsId);
   for (let i = 0; i < cardsId.length; i++) {
     fetch(`api/card/getOneCardById/${cardsId[i]}`)
       .then(function (res) {
@@ -31,15 +28,12 @@ const getAllUserCards = (cardsId) => {
         }
       })
       .then(function (card) {
-        console.log(card);
         createCard(card, i);
       })
       .catch(function (err) {
-        console.log(err);
         alert("Une erreur est survenue");
       });
   }
-  console.log(listePoke);
 };
 
 function createCard(card, i) {
@@ -122,9 +116,9 @@ function createCard(card, i) {
   const cardAnddownloadButton = document.createElement("div");
   cardAnddownloadButton.classList.add("container-card-download");
   cardAnddownloadButton.appendChild(carte);
-  console.log(cardAnddownloadButton);
+
   cardAnddownloadButton.appendChild(carteDownloadButton);
-  console.log(cardAnddownloadButton);
+
   listePoke.appendChild(cardAnddownloadButton);
 }
 
@@ -133,6 +127,6 @@ const displayStars = (rarity) => {
   for (let i = 0; i < rarity; i++) {
     result += '<i class="fa-solid fa-star"></i>';
   }
-  console.log(result);
+
   return result;
 };

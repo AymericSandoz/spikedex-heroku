@@ -5,7 +5,6 @@ const listePoke = document.querySelector(".liste-poke");
 const chargement = document.querySelector(".loader");
 
 document.getElementById("switch").addEventListener("change", function () {
-  console.log(this.value);
   if (this.value == "on") {
     this.value = "off";
     chargement.style.display = "flex";
@@ -14,8 +13,6 @@ document.getElementById("switch").addEventListener("change", function () {
     setTimeout(function () {
       fetchOwnerCardList();
     }, 1000);
-
-    console.log(listePoke);
   } else {
     this.value = "on";
     chargement.style.display = "flex";
@@ -24,7 +21,6 @@ document.getElementById("switch").addEventListener("change", function () {
     setTimeout(function () {
       fetchCardList();
     }, 1000);
-    console.log(listePoke);
   }
 });
 
@@ -34,7 +30,6 @@ const fetchCardList = () => {
     .then((allSpikemmon) => {
       createCard(allSpikemmon);
       chargement.style.display = "none";
-      console.log(allSpikemmon);
     })
     .catch((error) => {
       console.log(error);
@@ -55,7 +50,6 @@ const fetchOwnerCardList = () => {
   })
     .then((reponse) => reponse.json())
     .then((allSpikemmon) => {
-      console.log(allSpikemmon);
       createCard(allSpikemmon);
       chargement.style.display = "none";
     })
@@ -71,7 +65,7 @@ function createCard(arr) {
     const carte = document.createElement("li");
 
     let backgroundColor = arr[i].type.toLowerCase();
-    console.log("coucou");
+
     carte.style.backgroundImage = `url(images/background_${backgroundColor}.png)`;
     const txtCarte = document.createElement("h5");
     txtCarte.innerText = arr[i].name;
@@ -90,19 +84,22 @@ function createCard(arr) {
 // // Recherche
 searchInput.addEventListener("keyup", recherche);
 function recherche() {
-  if (index < 300) {
-    addPoke(280);
-  }
+  // if (listePoke < 300) {
+  //   addPoke(280);
+  // }
+
   let filter, allLi, titleValue, allTitles;
   filter = searchInput.value.toUpperCase();
-  allLi = document.querySelectorAll("li");
-  allTitles = document.querySelectorAll("li > h5");
-
+  allLi = document.querySelectorAll(".liste-poke li");
+  allTitles = document.querySelectorAll("h5");
+  console.log("allTitles", allTitles);
+  console.log("allLi : ", allLi);
+  console.log("allPokemon : ", allPokemon);
   for (i = 0; i < allLi.length; i++) {
     titleValue = allTitles[i].innerText;
 
     if (titleValue.toUpperCase().indexOf(filter) > -1) {
-      allLi[i].style.display = "flex";
+      allLi[i].style.display = "grid";
     } else {
       allLi[i].style.display = "none";
     }
@@ -123,6 +120,6 @@ const displayStars = (rarity) => {
   for (let i = 0; i < rarity; i++) {
     result += '<i class="fa-solid fa-star"></i>';
   }
-  console.log(result);
+
   return result;
 };

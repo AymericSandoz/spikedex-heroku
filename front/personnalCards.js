@@ -37,7 +37,6 @@ const fetchCardList = () => {
     .then((allSpikemmon) => {
       createCard(allSpikemmon);
       chargement.style.display = "none";
-      console.log(allSpikemmon);
     })
     .catch((error) => {
       console.log(error);

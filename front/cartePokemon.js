@@ -1,7 +1,6 @@
 /************ <!--  Définition d'une variable, en recherchant dans l'URl de page, 
  de idItem qui contient l'Id du produit que l'utilisateur a cliqué  --> *************/
 var str = window.location.href;
-console.log(str);
 var url = new URL(str);
 var nameItem = url.searchParams.get("name");
 //var idItem = "633e07b48d77b66d3d634134";
@@ -14,13 +13,11 @@ fetch("api/card/name/" + nameItem)
     }
   })
   .then(function (card) {
-    console.log(card);
     const cartePokemon = document.querySelector(".pokemon-card");
     displayBackgroundImage(card.type);
     cartePokemon.innerHTML = displayCardItem(card);
   })
   .catch(function (err) {
-    console.log(err);
     alert("Une erreur est survenue");
   });
 

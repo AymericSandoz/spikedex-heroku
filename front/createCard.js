@@ -63,7 +63,6 @@ const submitForm = (data) => {
   })
     .then((reponse) => reponse.json())
     .then((response) => {
-      console.log(response.error);
       if (response.error) {
         let err = document.querySelector(".error-message");
         err.innerHTML = response.error;
@@ -72,7 +71,8 @@ const submitForm = (data) => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      let err = document.querySelector(".error-message");
+      err.innerHTML = error;
     });
 };
 
@@ -80,10 +80,7 @@ let form = document.querySelector(".create-card");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  console.log(card);
-
   const data = new FormData();
-  console.log(card.description);
   data.append("description", card.description);
   data.append("name", card.name);
   data.append("type", card.type);
@@ -104,10 +101,8 @@ let previewButton = document.querySelector(".preview");
 previewButton.addEventListener("click", function (e) {
   e.preventDefault();
 
-  console.log(card);
-
   const data = new FormData();
-  console.log(card.description);
+
   data.append("description", card.description);
   data.append("name", card.name);
   data.append("type", card.type);
@@ -126,7 +121,6 @@ previewButton.addEventListener("click", function (e) {
 
   displayBackgroundImage(card.type);
 
-  console.log(card.imgPreview);
   cardPreview.innerHTML = displayCardItem(card);
 });
 
@@ -134,76 +128,62 @@ const cardName = document.querySelectorAll(".name");
 form.Spikemon_name.addEventListener("change", function () {
   card.name = this.value;
   cardName.innertext = this.value;
-  console.log(cardName);
-  console.log(card);
 });
 
 form.type.addEventListener("change", function () {
   card.type = this.value;
   const cardType = document.querySelectorAll(".type");
   cardType.innerHTML = this.value;
-  console.log(cardType);
-  console.log(card);
 });
 
 form.Pv_number.addEventListener("change", function () {
   card.pv = this.value;
   const cardHealth = document.querySelectorAll(".health");
   cardHealth.innerHTML = `${this.value} PV`;
-  console.log(cardHealth);
-  console.log(card);
 });
 
 form.type_attack_1.addEventListener("change", function () {
   card.attaque1Type = this.value;
-  console.log(card);
 });
 
 form.attack_number_1.addEventListener("change", function () {
   card.attaque1 = this.value;
-  console.log(card);
 });
 
 form.type_attack_2.addEventListener("change", function () {
   card.attaque2Type = this.value;
-  console.log(card);
 });
 
 form.attack_number_2.addEventListener("change", function () {
   card.attaque2 = this.value;
-  console.log(card);
 });
 
 form.weakness.addEventListener("change", function () {
   card.weakness = this.value;
-  console.log(card);
 });
 form.force.addEventListener("change", function () {
   card.force = this.value;
-  console.log(card);
 });
 
 form.Attack_1_number.addEventListener("change", function () {
   card.Attack_1_number = this.value;
-  console.log(card);
 });
 form.Attack_2_number.addEventListener("change", function () {
   card.Attack_2_number = this.value;
-  console.log(card);
 });
 form.pokemon_description.addEventListener("change", function () {
   card.description = this.value;
-  console.log(card);
 });
 
 form.avatar.addEventListener("change", function (event) {
   card.image = event.target.files[0];
-  console.log(event.files);
-  console.log(event.target.files[0]);
-  console.log(event.target.files[0]);
 
   const [picture] = event.target.files;
   card.imgPreview = URL.createObjectURL(picture);
+  const avatarChecked = document.querySelector(".avatar-file-checked");
+  if (picture) {
+    avatarChecked.style.display = "flex";
+  }
 });
 
 const displayCardItem = (card) => {

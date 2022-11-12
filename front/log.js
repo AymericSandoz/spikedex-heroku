@@ -1,5 +1,5 @@
 let tabs = document.querySelectorAll(".tab-link:not(.desactive)");
-console.log("coucou");
+
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     unSelectAll();
@@ -32,19 +32,13 @@ var errorinscriptionMsg = document.querySelector("#inscriptionError");
 
 var accentedCharacters =
   "àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ";
-console.log("hellllllo");
+
 //////////////inscription
 let inscriptionForm = document.querySelector(".inscription-form");
 
 inscriptionForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  console.log("submit marche");
-  console.log(inscription);
-
-  console.log(inscription.name);
-  console.log(inscription.pseudo);
-  console.log(inscription.email);
   if (
     validEmail(emailInscription) &&
     validname(nameInscription) &&
@@ -52,10 +46,8 @@ inscriptionForm.addEventListener("submit", function (e) {
     inscription.mdp == inscription.mdp2 &&
     inscription.mdp.length >= 5
   ) {
-    console.log("submitform");
     submitInscriptionForm();
   } else {
-    console.log(errorinscription);
     if (inscription.mdp.length >= 5) {
       if (inscription.mdp != inscription.mdp2) {
         if (
@@ -83,13 +75,13 @@ inscriptionForm.addEventListener("submit", function (e) {
 //ecouter la modification du mail
 
 let emailInscription = document.querySelector(".email-inscription");
-console.log(emailInscription);
+
 emailInscription.addEventListener("change", function () {
   validEmail(this);
 });
 const validEmail = function (inputEmail) {
   ///creation de la regexp pour la validation email
-  console.log("lets go");
+
   let emailRegex = new RegExp(
     "[a-zA-Z0-9._-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
     "g"
@@ -98,7 +90,7 @@ const validEmail = function (inputEmail) {
   let testEmail = emailRegex.test(inputEmail.value);
   if (testEmail) {
     inscription.email = inputEmail.value;
-    console.log(inscription.email);
+
     return true;
   } else {
     errorinscription = "E-mail non valide";
@@ -111,19 +103,19 @@ const validEmail = function (inputEmail) {
 //ecouter la modification du nom
 
 let nameInscription = document.querySelector(".nom-inscription");
-console.log(nameInscription);
+
 nameInscription.addEventListener("change", function () {
   validname(this);
 });
 const validname = function (inputName) {
   ///creation de la regexp pour la validation email
-  console.log("lets go");
+
   let NameRegex = new RegExp("^[A-Za-z_ -]+$");
 
   let testName = NameRegex.test(inputName.value);
   if (testName) {
     inscription.name = inputName.value;
-    console.log(inscription.name);
+
     return true;
   } else {
     errorinscription = "Nom invalide";
@@ -135,7 +127,7 @@ const validname = function (inputName) {
 ///////****************Validation pseudo***************************
 //ecouter la modification du pseudo
 let pseudoInscription = document.querySelector(".pseudo-inscription");
-console.log(pseudoInscription);
+
 pseudoInscription.addEventListener("change", function () {
   validPseudo(this);
 });
@@ -145,7 +137,7 @@ const validPseudo = function (inputPseudo) {
   let testPseudo = inputPseudo.value.length <= 18;
   if (testPseudo) {
     inscription.pseudo = inputPseudo.value;
-    console.log(inscription.pseudo);
+
     return true;
   } else {
     errorinscription = "Pseudo invalide";
@@ -158,7 +150,7 @@ const validPseudo = function (inputPseudo) {
 //ecouter la modification du mdp
 
 let mdpInscription = document.querySelector(".password1-inscription");
-console.log(mdpInscription);
+
 mdpInscription.addEventListener("change", function () {
   inscription.mdp = this.value;
 });
@@ -167,14 +159,13 @@ mdpInscription.addEventListener("change", function () {
 //ecouter la modification du mdp
 
 let mdp2Inscription = document.querySelector(".password2-inscription");
-console.log(mdp2Inscription);
+
 mdp2Inscription.addEventListener("change", function () {
   inscription.mdp2 = this.value;
 });
 
 /////****************fonction pour envoyer le formulaire d'inscription***************************
 const submitInscriptionForm = () => {
-  console.log(inscription);
   fetch("api/user/signup", {
     method: "POST",
     headers: {
@@ -186,7 +177,6 @@ const submitInscriptionForm = () => {
       return res.json();
     })
     .then((response) => {
-      console.log(response);
       if (response.errors) {
         if (response.errors.email) {
           errorinscriptionMsg.innerHTML = "email déja utilisé";
@@ -205,7 +195,7 @@ const submitInscriptionForm = () => {
 ///////////////////////Connexion
 
 let mdpConnexion = document.querySelector(".password-connexion");
-console.log(mdpConnexion);
+
 mdpConnexion.addEventListener("change", function () {
   connexion.password = this.value;
 });
@@ -214,14 +204,13 @@ mdpConnexion.addEventListener("change", function () {
 //ecouter la modification du mdp
 
 let emailConnexion = document.querySelector(".email-connexion");
-console.log(emailConnexion);
+
 emailConnexion.addEventListener("change", function () {
   connexion.email = this.value;
 });
 
 /////****************fonction pour envoyer le formulaire de connexion***************************
 const submitConnexionForm = () => {
-  console.log(connexion);
   fetch("api/user/login", {
     method: "POST",
     headers: {
@@ -234,7 +223,6 @@ const submitConnexionForm = () => {
     })
     .then((data) => {
       if (data.error) {
-        console.log(data.error);
         const errorConnexion = document.querySelector("#connexionError");
         errorConnexion.innerHTML = data.error;
       } else {

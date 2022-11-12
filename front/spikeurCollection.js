@@ -1,5 +1,5 @@
 var str = window.location.href;
-console.log(str);
+
 var url = new URL(str);
 var userId = url.searchParams.get("id");
 var name2 = url.searchParams.get("name");
@@ -28,7 +28,6 @@ nameSection.innerHTML = `
 //   Glace: "#96D9D6",
 // };
 
-console.log(userId);
 // fetch(`http://localhost:5000/api/card/getAllUserCards/${userId}`)
 //   .then(function (res) {
 //     if (res.ok) {
@@ -50,7 +49,6 @@ fetch(`api/user/getOneUser/${userId}`)
     }
   })
   .then(function (user) {
-    console.log(user);
     getAllUserCards(user.cardsId);
   })
   .catch(function (err) {
@@ -59,7 +57,6 @@ fetch(`api/user/getOneUser/${userId}`)
   });
 
 const getAllUserCards = (cardsId) => {
-  console.log(cardsId);
   for (let i = 0; i < cardsId.length; i++) {
     fetch(`api/card/getOneCardById/${cardsId[i]}`)
       .then(function (res) {
@@ -68,7 +65,6 @@ const getAllUserCards = (cardsId) => {
         }
       })
       .then(function (card) {
-        console.log(card);
         createCard(card);
       })
       .catch(function (err) {
@@ -102,7 +98,7 @@ function createCard(card) {
   // let couleur = types[card.type];
   // carte.style.background = couleur;
   let backgroundColor = card.type.toLowerCase();
-  console.log(backgroundColor);
+
   carte.style.backgroundImage = `url(images/background_${backgroundColor}.png)`;
   const txtCarte = document.createElement("h5");
   txtCarte.innerText = card.name;
@@ -115,8 +111,7 @@ function createCard(card) {
 
   carte.appendChild(imgCarte);
   carte.appendChild(txtCarte);
-  console.log(stars);
-  console.log(displayStars(card.weight));
+
   carte.appendChild(stars);
   listePoke.appendChild(carte);
 }
@@ -138,6 +133,6 @@ const displayStars = (rarity) => {
   for (let i = 0; i < rarity; i++) {
     result += '<i class="fa-solid fa-star"></i>';
   }
-  console.log(result);
+
   return result;
 };

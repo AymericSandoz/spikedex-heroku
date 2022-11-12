@@ -44,7 +44,7 @@
       
 
  
-            <input type="number" placeholder="PV"  name="Pv_number" id="Pv_number" min="1" max="300"  id="quantity" required="true">
+            <input type="number" placeholder="100PV"  name="Pv_number" id="Pv_number" min="1" max="300"  id="quantity" required="true">
        
        
                                 <select name="type" id="type" required="true">
@@ -64,7 +64,8 @@
                   </select>
               
                 </div>
-                <label for="avatar" class="avatar-file"><i class="fa-solid fa-image"></i>Choisis ton Avatar (png ou jpg)</label>
+                <label for="avatar" class="avatar-file"><i class="fa-solid fa-image"></i>Choisis ton Avatar (png, jpeg ou jpg  || max 10MB) <br/> Attention, vérifie bien que l'image n'est pas rogné grâce à l'onglet preview(évite les formats portrait pas assez large).
+                    <span class="avatar-file-checked"> Fichier ajouté</span></label>
 
 <input type="file"
        id="avatar" name="avatar"  class="input-avatar"
@@ -94,7 +95,7 @@
 
                   </select>
                   <input type="text" name="attack_number_1" id="attack_number_1" placeholder="Fatal bloc" required="true" value="">
-                  <input type="number" name="Attack_1_number" id="attack_1_number" min="1" max="300"  required="true">
+                  <input type="number" name="Attack_1_number" id="attack_1_number" min="1" max="300"  required="true" placeholder="10">
                 </div>
 
                 <div class="attack_number_2">
@@ -118,7 +119,7 @@
 
                   </select>
                   <input type="text" name="attack_number_2" id="attack_number_2" placeholder="Cut éclair" required="true">
-                  <input type="number" name="Attack_2_number" id="attack_2_number" min="1" max="300"  required="true">
+                  <input type="number" name="Attack_2_number" id="attack_2_number" min="1" max="300"  required="true" placeholder="44">
                 </div>
 
                 </div>
@@ -136,7 +137,7 @@
                 <div class="pokemon_description">
 
 <textarea id="pokemon_description" name="pokemon_description"
-          rows="4" cols="33" required="true" maxlength="50">
+          rows="4" cols="33" required="true" maxlength="50" placeholder="spikemon description">
 </textarea>
                 </div>
             </div>

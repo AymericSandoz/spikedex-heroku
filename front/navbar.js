@@ -3,7 +3,7 @@ const nav__links = document.querySelector(".nav__links");
 const header__wrapper = document.querySelector(".site-header__wrapper");
 
 const pseudo = localStorage.getItem("pseudo");
-// console.log(pseudo);
+
 // const welcomeMessage = document.querySelector(".welcome-message");
 if (!pseudo) {
   nav__links.innerHTML = `

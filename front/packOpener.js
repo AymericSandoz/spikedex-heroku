@@ -4,7 +4,7 @@
 var pack = document.querySelector(".pokemon-pack");
 var packImg = document.querySelector(".img-pokemon-pack");
 var messagePack = document.querySelector(".message-pack");
-console.log("pack", pack);
+
 const atcualiseMessagePack = async () => {
   let tokenNumber = await getTokenNumber();
   messagePack.innerHTML = `
@@ -34,7 +34,7 @@ const getTokenNumber = async () => {
     })
     .then(function (user) {
       packToken = user.packToken;
-      console.log(packToken);
+
       return packToken;
     })
     .catch(function (err) {
@@ -100,7 +100,7 @@ const savePackCards = (data) => {
       if (data.error) {
         console.log(data.error);
       } else {
-        //console.log(data);
+        console.log("pack saved");
       }
     })
     .catch((err) => {
@@ -122,7 +122,7 @@ const openPack = (allSpikemmon) => {
     },
   })
     .then((res) => {
-      console.log("done");
+      console.log("Pack opened");
     })
     .catch((error) => {
       console.log(error);
@@ -136,9 +136,8 @@ const openPack = (allSpikemmon) => {
     if (allSpikemmon[hasardNumber].weight / 100 > hasardProba) {
       tableauFinal.push(allSpikemmon[hasardNumber]);
       i++;
-      console.log(i);
     } else {
-      console.log("oups");
+      console.log("error");
     }
   }
 
@@ -148,7 +147,6 @@ const openPack = (allSpikemmon) => {
   //////////////store cards
 
   for (let i = 0; i < 3; i++) {
-    // console.log(tableauFinal[i]._id);
     savePackCards(tableauFinal[i]._id);
     downloadCard(tableauFinal[i]._id, i);
   }
@@ -236,7 +234,6 @@ const displayAllPackCards = (listOfCards) => {
 };
 
 const displayBackgroundImage = (listOfCards) => {
-  console.log(listOfCards);
   for (let i = 0; i < listOfCards.length; i++) {
     const type = listOfCards[i].type;
 
@@ -350,9 +347,8 @@ const downloadCard = (idCardToDownload, i) => {
   let cardToDownload = document.getElementById(`${i}-${idCardToDownload}`);
   // let cardToDownload = document.querySelector("body");
   let scale = 2;
-  console.log("les guepars sont des ....................;");
+
   btn.addEventListener("click", function () {
-    console.log("download");
     domtoimage
       .toBlob(cardToDownload, {
         style: style,
@@ -409,6 +405,5 @@ const displayStars = (rarity) => {
   for (let i = 0; i < rarity; i++) {
     result += '<i class="fa-solid fa-star"></i>';
   }
-  console.log(result);
   return result;
 };
