@@ -67,6 +67,11 @@ function createCard(arr) {
     let backgroundColor = arr[i].type.toLowerCase();
 
     carte.style.backgroundImage = `url(images/background_${backgroundColor}.png)`;
+    console.log(backgroundColor);
+    if (backgroundColor == "ténèbre") {
+      console.log("pinpin");
+      carte.style.color = "white";
+    }
     const txtCarte = document.createElement("h5");
     txtCarte.innerText = arr[i].name;
     const stars = document.createElement("p");
