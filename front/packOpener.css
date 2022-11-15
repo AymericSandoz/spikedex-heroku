@@ -299,6 +299,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(44,9,121,1) 35%, rgba
 
 .character-description {
   height: 40px;
+  width: 380px;
   margin: 0 20px;
   border: 2px solid #e7c30d;
   box-shadow: 1px 1px 5px black;
@@ -308,6 +309,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(44,9,121,1) 35%, rgba
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          white-space: pre-wrap;
 }
 
 

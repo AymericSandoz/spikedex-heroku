@@ -222,6 +222,7 @@ body {
 
 .character-description {
   height: 40px;
+  width: 380px;
   margin: 0 20px;
   border: 2px solid #e7c30d;
   box-shadow: 1px 1px 5px black;
@@ -231,6 +232,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          white-space: pre-wrap;
 }
 
 
